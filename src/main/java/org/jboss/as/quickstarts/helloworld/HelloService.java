@@ -30,11 +30,6 @@ public class HelloService {
       System.out.println("@PostConstruct method");
    }
 
-   @PostConstruct
-   void postConstruct2() {
-      System.out.println("@PostConstruct method 2");
-   }
-
    String createHelloMessage(String name) {
       return "Hello " + name + "!";
    }

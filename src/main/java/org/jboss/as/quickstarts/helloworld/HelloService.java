@@ -1,6 +1,7 @@
 package org.jboss.as.quickstarts.helloworld;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 /**
@@ -9,6 +10,7 @@ import javax.inject.Inject;
  * @author Pete Muir
  * 
  */
+@ApplicationScoped
 public class HelloService {
 
    private ServiceConfig config;
@@ -17,6 +19,7 @@ public class HelloService {
       System.out.println("HelloService<init>");
    }
 
+   @Inject
    public HelloService(ServiceConfig conf) {
       this.config = conf;
    }

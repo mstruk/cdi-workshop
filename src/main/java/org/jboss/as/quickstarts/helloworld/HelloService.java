@@ -1,7 +1,6 @@
 package org.jboss.as.quickstarts.helloworld;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 /**
@@ -10,7 +9,6 @@ import javax.inject.Inject;
  * @author Pete Muir
  * 
  */
-@ApplicationScoped
 public class HelloService {
 
    public HelloService() {
@@ -22,10 +20,10 @@ public class HelloService {
       System.out.println("Initializer method - init()");
    }
 
-    @Inject
-    void init2() {
-       System.out.println("Initializer method 2 - init2()");
-    }
+   @Inject
+   void init2() {
+      System.out.println("Initializer method 2 - init2()");
+   }
 
    @PostConstruct
    void postConstruct() {

@@ -11,8 +11,14 @@ import javax.inject.Inject;
  */
 public class HelloService {
 
+   private ServiceConfig config;
+
    public HelloService() {
       System.out.println("HelloService<init>");
+   }
+
+   public HelloService(ServiceConfig conf) {
+      this.config = conf;
    }
 
    @Inject

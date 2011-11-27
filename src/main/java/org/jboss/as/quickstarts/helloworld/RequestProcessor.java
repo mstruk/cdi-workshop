@@ -14,13 +14,17 @@ public class RequestProcessor {
 
    private String action;
 
+   public RequestProcessor() {
+      System.out.println("RequestProcessor<init>");
+   }
+
    @Inject
    public RequestProcessor(HttpServletRequest req) {
+      System.out.println("RequestProcessor<init> (" + req + ")");
       action = req.getParameter(ACTION);
    }
 
-   public String getAction()
-   {
+   public String getAction() {
       return action;
    }
 }

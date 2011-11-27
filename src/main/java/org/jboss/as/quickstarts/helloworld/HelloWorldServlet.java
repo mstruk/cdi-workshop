@@ -34,11 +34,18 @@ public class HelloWorldServlet extends HttpServlet {
    @Inject
    HelloService helloService;
 
+   @Inject
+   HelloService service2;
+
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      System.out.println("doGet()");
       PrintWriter writer = resp.getWriter();
       writer.println(PAGE_HEADER);
       writer.println("<h1>" + helloService.createHelloMessage("World") + "</h1>");
+      writer.println("<p>helloService: " + helloService + "</p>");
+      writer.println("<p>service2: " + service2 + "</p>");
+      writer.println("<p>Assert helloService != service2: " + (helloService != service2) + "</p>");
       writer.println(PAGE_FOOTER);
       writer.close();
    }

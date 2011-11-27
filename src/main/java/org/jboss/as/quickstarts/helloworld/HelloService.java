@@ -8,6 +8,11 @@ package org.jboss.as.quickstarts.helloworld;
  */
 public class HelloService {
 
+   public HelloService()
+   {
+      System.out.println("HelloService<init>");
+   }
+
    String createHelloMessage(String name) {
       return "Hello " + name + "!";
    }

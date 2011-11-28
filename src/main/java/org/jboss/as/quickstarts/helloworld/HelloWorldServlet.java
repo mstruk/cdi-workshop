@@ -39,6 +39,8 @@ public class HelloWorldServlet extends HttpServlet {
 
    @Inject RequestProcessor handler;
 
+   @Inject ShoppingCart cart;
+
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       System.out.println("doGet()");
@@ -46,6 +48,7 @@ public class HelloWorldServlet extends HttpServlet {
       writer.println(PAGE_HEADER);
       writer.println("<h1>" + helloService.createHelloMessage("World") + "</h1>");
       writer.println("<p>action = " + handler.getAction() + "</p>");
+      writer.println("<p>Shopping Cart: " + cart);
       writer.println("<p>helloService: " + helloService + "</p>");
       writer.println("<p>service2: " + service2 + "</p>");
       writer.println("<p>Assert helloService != service2: " + (helloService != service2) + "</p>");

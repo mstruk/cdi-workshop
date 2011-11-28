@@ -11,6 +11,7 @@ public class ObjectFactory {
 
    @Produces
    public HttpServletRequest getRequest() {
+      System.out.println("ObjectFactory.getRequest()");
       return requestTL.get();
    }
 

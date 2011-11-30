@@ -19,7 +19,7 @@ public class ObjectFactory {
       return requestTL.get();
    }
 
-   @Produces @RequestScoped @HttpParam
+   @Produces @HttpParam
    public String getRequestParam(InjectionPoint ip)
    {
       return requestTL.get().getParameter(ip.getAnnotated().getAnnotation(HttpParam.class).value());

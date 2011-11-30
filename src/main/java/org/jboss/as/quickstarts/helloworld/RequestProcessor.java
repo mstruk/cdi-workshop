@@ -3,6 +3,7 @@ package org.jboss.as.quickstarts.helloworld;
 import org.jboss.as.quickstarts.helloworld.annotations.HttpParam;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.servlet.ServletRequest;
 
@@ -23,9 +24,13 @@ public class RequestProcessor {
    }
 
    @Inject
-   private RequestProcessor(ServletRequest req) {
-      System.out.println("RequestProcessor<init> (" + req + ")");
-      action = req.getParameter(ACTION);
+   private RequestProcessor(Instance<ServletRequest> reqInstance) {
+      System.out.println("RequestProcessor<init> (" + reqInstance + ")");
+      System.out.println("isAmbiguous: " + reqInstance.isAmbiguous());
+      for (ServletRequest req: reqInstance) {
+         System.out.println("  req: " + req);
+         action = req.getParameter(ACTION);
+      }
    }
 
    public String getAction() {

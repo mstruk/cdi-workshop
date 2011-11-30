@@ -19,7 +19,7 @@ public class RequestProcessor {
 
    @Inject @HttpParam("action") private String action2;
 
-   private RequestProcessor() {
+   RequestProcessor() {
       System.out.println("RequestProcessor<init>");
    }
 

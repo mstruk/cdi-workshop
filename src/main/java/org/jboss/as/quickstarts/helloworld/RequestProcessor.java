@@ -4,7 +4,7 @@ import org.jboss.as.quickstarts.helloworld.annotations.HttpParam;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletRequest;
 
 /**
  * @author <a href="mailto:mstrukel@redhat.com>Marko Strukelj</a>
@@ -23,7 +23,7 @@ public class RequestProcessor {
    }
 
    @Inject
-   private RequestProcessor(HttpServletRequest req) {
+   private RequestProcessor(ServletRequest req) {
       System.out.println("RequestProcessor<init> (" + req + ")");
       action = req.getParameter(ACTION);
    }

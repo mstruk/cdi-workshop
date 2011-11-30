@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.servlet.ServletRequest;
+import java.util.LinkedList;
 
 /**
  * @author <a href="mailto:mstrukel@redhat.com>Marko Strukelj</a>
@@ -27,10 +28,15 @@ public class RequestProcessor {
    private RequestProcessor(Instance<ServletRequest> reqInstance) {
       System.out.println("RequestProcessor<init> (" + reqInstance + ")");
       System.out.println("isAmbiguous: " + reqInstance.isAmbiguous());
+      LinkedList someList = new LinkedList();
       for (ServletRequest req: reqInstance) {
-         System.out.println("  req: " + req);
-         action = req.getParameter(ACTION);
+         //System.out.println("  req: " + req);
+         //action = req.getParameter(ACTION);
+         someList.add(req);
       }
+      action = reqInstance.iterator().next().getParameter(ACTION);
+      System.out.println("Action set");
+      System.out.println("Instances iterated: " + someList);
    }
 
    public String getAction() {

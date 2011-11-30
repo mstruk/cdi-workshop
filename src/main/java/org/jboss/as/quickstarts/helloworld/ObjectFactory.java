@@ -1,35 +1,30 @@
 package org.jboss.as.quickstarts.helloworld;
 
 import org.jboss.as.quickstarts.helloworld.annotations.HttpParam;
+import org.jboss.as.quickstarts.helloworld.util.ServletRequestProvider;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.spi.InjectionPoint;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author <a href="mailto:mstrukel@redhat.com>Marko Strukelj</a>
  */
 public class ObjectFactory {
-   private static final ThreadLocal<HttpServletRequest> requestTL = new ThreadLocal<HttpServletRequest>();
+   @Inject
+   private ServletRequestProvider reqProvider;
 
    @Produces @RequestScoped
    public HttpServletRequest getRequest() {
       System.out.println("ObjectFactory.getRequest()");
-      return requestTL.get();
+      return (HttpServletRequest) reqProvider.getServletRequest();
    }
 
    @Produces @HttpParam
    public String getRequestParam(InjectionPoint ip)
    {
-      return requestTL.get().getParameter(ip.getAnnotated().getAnnotation(HttpParam.class).value());
-   }
-
-   public static void startRequest(HttpServletRequest req) {
-      requestTL.set(req);
-   }
-
-   public static void endRequest() {
-      requestTL.remove();
+      return reqProvider.getServletRequest().getParameter(ip.getAnnotated().getAnnotation(HttpParam.class).value());
    }
 }

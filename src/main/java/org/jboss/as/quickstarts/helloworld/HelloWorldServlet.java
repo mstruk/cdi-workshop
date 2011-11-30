@@ -48,6 +48,7 @@ public class HelloWorldServlet extends HttpServlet {
       writer.println(PAGE_HEADER);
       writer.println("<h1>" + helloService.createHelloMessage("World") + "</h1>");
       writer.println("<p>action = " + handler.getAction() + "</p>");
+      writer.println("<p>action2 = " + handler.getAction2() + "</p>");
       writer.println("<p>Shopping Cart: " + cart);
       writer.println("<p>helloService: " + helloService + "</p>");
       writer.println("<p>service2: " + service2 + "</p>");

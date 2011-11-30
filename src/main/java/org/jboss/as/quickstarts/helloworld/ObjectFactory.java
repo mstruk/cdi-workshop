@@ -1,7 +1,10 @@
 package org.jboss.as.quickstarts.helloworld;
 
+import org.jboss.as.quickstarts.helloworld.annotations.HttpParam;
+
 import javax.enterprise.inject.Produces;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.spi.InjectionPoint;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -14,6 +17,12 @@ public class ObjectFactory {
    public HttpServletRequest getRequest() {
       System.out.println("ObjectFactory.getRequest()");
       return requestTL.get();
+   }
+
+   @Produces @RequestScoped @HttpParam
+   public String getRequestParam(InjectionPoint ip)
+   {
+      return requestTL.get().getParameter(ip.getAnnotated().getAnnotation(HttpParam.class).value());
    }
 
    public static void startRequest(HttpServletRequest req) {

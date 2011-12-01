@@ -1,5 +1,7 @@
 package org.jboss.as.quickstarts.helloworld;
 
+import org.jboss.as.quickstarts.helloworld.annotations.UserName;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -9,10 +11,10 @@ import javax.inject.Inject;
 @RequestScoped
 public class RequestHandler {
 
-   @Inject
+   @Inject @UserName
    private String user;
 
-   @Inject
+   @Inject @UserName
    private String currentUser;
 
    String getUser() {

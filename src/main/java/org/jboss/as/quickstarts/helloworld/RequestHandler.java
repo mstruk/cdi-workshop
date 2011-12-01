@@ -1,7 +1,5 @@
 package org.jboss.as.quickstarts.helloworld;
 
-import org.jboss.as.quickstarts.helloworld.annotations.LoggedIn;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 

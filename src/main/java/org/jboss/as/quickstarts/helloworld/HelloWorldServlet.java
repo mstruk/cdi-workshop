@@ -18,11 +18,17 @@ public class HelloWorldServlet extends HttpServlet {
 
    static String PAGE_FOOTER = "</body></html>";
 
+   @Inject RequestHandler handler;
+
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       System.out.println("doGet()");
       PrintWriter writer = resp.getWriter();
       writer.println(PAGE_HEADER);
+
+      writer.println("<p>Current user: " + handler.getCurrentUser() + "</p>");
+      writer.println("<p>User: " + handler.getUser() + "</p>");
+
       writer.println(PAGE_FOOTER);
       writer.close();
    }

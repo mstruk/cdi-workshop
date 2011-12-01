@@ -3,6 +3,7 @@ package org.jboss.as.quickstarts.helloworld;
 import org.jboss.as.quickstarts.helloworld.annotations.LoggedIn;
 import org.jboss.as.quickstarts.helloworld.annotations.UserName;
 
+import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 
 /**
@@ -10,12 +11,12 @@ import javax.enterprise.inject.Produces;
  */
 public class UserNameProvider {
 
-   @Produces
+   @Produces @Default @UserName
    private String getCurrentUserName() {
       return "johndoe";
    }
 
-   @Produces @LoggedIn
+   @Produces @LoggedIn @UserName
    private String getRequestedUserName() {
       return "janedoe";
    }

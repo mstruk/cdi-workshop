@@ -4,6 +4,7 @@ import org.jboss.as.quickstarts.helloworld.annotations.LoggedIn;
 import org.jboss.as.quickstarts.helloworld.annotations.UserName;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 
 /**
@@ -12,10 +13,10 @@ import javax.inject.Inject;
 @RequestScoped
 public class RequestHandler {
 
-   @Inject
+   @Inject @Default @UserName
    private String user;
 
-   @Inject @LoggedIn
+   @Inject @LoggedIn @UserName
    private String currentUser;
 
    String getUser() {

@@ -1,5 +1,6 @@
 package org.jboss.as.quickstarts.helloworld;
 
+import org.jboss.as.quickstarts.helloworld.annotations.LoggedIn;
 import org.jboss.as.quickstarts.helloworld.annotations.UserName;
 
 import javax.enterprise.context.RequestScoped;
@@ -14,7 +15,7 @@ public class RequestHandler {
    @Inject
    private String user;
 
-   @Inject
+   @Inject @LoggedIn
    private String currentUser;
 
    String getUser() {

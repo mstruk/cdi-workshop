@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @RequestScoped
 public class RequestHandler {
 
-   @Inject @UserName
+   @Inject
    private String user;
 
-   @Inject @UserName
+   @Inject
    private String currentUser;
 
    String getUser() {

@@ -10,12 +10,12 @@ import javax.enterprise.inject.Produces;
  */
 public class UserNameProvider {
 
-   @Produces @UserName
+   @Produces
    private String getCurrentUserName() {
       return "johndoe";
    }
 
-   @Produces @LoggedIn @UserName
+   @Produces @LoggedIn
    private String getRequestedUserName() {
       return "janedoe";
    }

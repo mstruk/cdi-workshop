@@ -1,8 +1,6 @@
 package org.jboss.as.quickstarts.helloworld.util;
 
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
-import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
@@ -13,7 +11,7 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class RequestListener implements ServletRequestListener {
    @Inject
-   Event<ServletRequest> event;
+   private ServletRequestProvider reqProvider;
 
    @Override
    public void requestDestroyed(ServletRequestEvent servletRequestEvent) {
@@ -21,6 +19,6 @@ public class RequestListener implements ServletRequestListener {
 
    @Override
    public void requestInitialized(ServletRequestEvent servletRequestEvent) {
-      event.fire(servletRequestEvent.getServletRequest());
+      reqProvider.setServletRequest(servletRequestEvent.getServletRequest());
    }
 }

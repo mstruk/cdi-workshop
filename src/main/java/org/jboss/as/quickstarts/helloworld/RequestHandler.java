@@ -16,7 +16,7 @@ public class RequestHandler {
    @Inject @Default @UserName
    private String user;
 
-   @Inject @LoggedIn @UserName
+   @Inject @LoggedIn
    private String currentUser;
 
    String getUser() {

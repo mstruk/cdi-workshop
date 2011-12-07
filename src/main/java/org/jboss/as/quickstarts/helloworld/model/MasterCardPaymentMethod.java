@@ -1,5 +1,6 @@
 package org.jboss.as.quickstarts.helloworld.model;
 
+import javax.enterprise.inject.Produces;
 import java.math.BigInteger;
 
 /**
@@ -14,5 +15,10 @@ public class MasterCardPaymentMethod extends AbstractPaymentMethod
    @Override
    public void performPayment(BigInteger amount) {
       // MasterCard service . doPayment(name, number, expiresMonth + "/" + expiresYear, amount)
+   }
+
+   @Produces
+   private Stats<MasterCardPaymentMethod> getStats() {
+      return new Stats<MasterCardPaymentMethod>(this);
    }
 }

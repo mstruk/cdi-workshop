@@ -31,6 +31,7 @@ public class HelloWorldServlet extends HttpServlet {
 
    @Inject PaymentMethod paymentMethod3;
 
+   @Inject Stats<MasterCardPaymentMethod> stats;
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

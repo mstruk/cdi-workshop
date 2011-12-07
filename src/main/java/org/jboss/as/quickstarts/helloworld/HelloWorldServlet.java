@@ -1,5 +1,10 @@
 package org.jboss.as.quickstarts.helloworld;
 
+import org.jboss.as.quickstarts.helloworld.model.AbstractPaymentMethod;
+import org.jboss.as.quickstarts.helloworld.model.MasterCardPaymentMethod;
+import org.jboss.as.quickstarts.helloworld.model.PaymentMethod;
+import org.jboss.as.quickstarts.helloworld.model.Stats;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -20,6 +25,13 @@ public class HelloWorldServlet extends HttpServlet {
 
    @Inject RequestHandler handler;
 
+   @Inject AbstractPaymentMethod paymentMethod1;
+
+   @Inject MasterCardPaymentMethod paymentMethod2;
+
+   @Inject PaymentMethod paymentMethod3;
+
+
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       System.out.println("doGet()");
@@ -28,6 +40,9 @@ public class HelloWorldServlet extends HttpServlet {
 
       writer.println("<p>Current user: " + handler.getCurrentUser() + "</p>");
       writer.println("<p>User: " + handler.getUser() + "</p>");
+      writer.println("<p>PaymentMethod1: " + paymentMethod1 + "</p>");
+      writer.println("<p>PaymentMethod2: " + paymentMethod2 + "</p>");
+      writer.println("<p>PaymentMethod3: " + paymentMethod3 + "</p>");
 
       writer.println(PAGE_FOOTER);
       writer.close();

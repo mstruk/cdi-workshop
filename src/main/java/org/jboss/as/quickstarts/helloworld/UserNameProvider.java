@@ -11,6 +11,10 @@ import javax.enterprise.inject.Produces;
  */
 public class UserNameProvider {
 
+   public UserNameProvider() {
+      System.out.println("UserNameProvider<init>");
+   }
+
    @Produces @Default @UserName
    private String getCurrentUserName() {
       return "johndoe";
